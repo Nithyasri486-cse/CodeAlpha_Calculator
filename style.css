@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.calculator-container {
+    background: #0f3460;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+}
+
+.calculator-title {
+    text-align: center;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.display {
+    background: #1a1a2e;
+    color: #00d4ff;
+    font-size: 2.5em;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: right;
+    margin-bottom: 20px;
+    min-height: 70px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border: 2px solid #00d4ff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.number-btn {
+    background: #16213e;
+    color: #00d4ff;
+    border: 2px solid #00d4ff;
+}
+
+.number-btn:hover {
+    background: #1e2f4a;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.operator-btn {
+    background: #e94560;
+    color: white;
+}
+
+.operator-btn:hover {
+    background: #f55a75;
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.4);
+}
+
+.equals-btn {
+    background: #00d4ff;
+    color: #0f3460;
+    grid-column: span 2;
+}
+
+.equals-btn:hover {
+    background: #00e8ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.clear-btn {
+    background: #ffa500;
+    color: white;
+    grid-column: span 2;
+}
+
+.clear-btn:hover {
+    background: #ffb319;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+}
+
+.delete-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #7a8288;
+    box-shadow: 0 0 15px rgba(108, 117, 125, 0.4);
+}
+
+@media (max-width: 480px) {
+    .calculator-container {
+        padding: 20px;
+    }
+
+    .display {
+        font-size: 2em;
+        padding: 15px;
+        min-height: 60px;
+    }
+
+    button {
+        padding: 15px;
+        font-size: 1.1em;
+    }
+
+    .calculator-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .calculator-container {
+        padding: 15px;
+    }
+
+    .display {
+        font-size: 1.8em;
+        padding: 12px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 1em;
+    }
+}
