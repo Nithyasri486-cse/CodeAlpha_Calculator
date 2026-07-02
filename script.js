@@ -7,7 +7,7 @@ let expression = '';
 
 function appendNumber(num) {
     if (shouldResetDisplay) {
-        currentInput = num;
+        currentInput = num === '.' ? '0.' : num;
         shouldResetDisplay = false;
     } else {
         if (currentInput === '0' && num !== '.') {
@@ -21,25 +21,40 @@ function appendNumber(num) {
     updateDisplay();
 }
 
+
 function appendOperator(op) {
-    if (operator !== null && !shouldResetDisplay) {
+
+    // If operator already pressed, just replace it
+    if (shouldResetDisplay) {
+        operator = op;
+        expression = previousInput + ' ' + op + ' ';
+        updateDisplay();
+        return;
+    }
+
+    if (operator !== null) {
         calculate();
     }
-    
-    if (op !== '.') {
-        expression = currentInput + ' ' + op + ' ';
-        previousInput = currentInput;
-        operator = op;
-        shouldResetDisplay = true;
-        currentInput = '0'; // Reset currentInput after operator
-        updateDisplay();
-    }
+
+    previousInput = currentInput;
+    operator = op;
+    expression = previousInput + ' ' + op + ' ';
+    shouldResetDisplay = true;
+    currentInput = '0';
+    updateDisplay();
 }
 
 function calculate() {
-    if (operator === null || shouldResetDisplay) return;
+    if (shouldResetDisplay) {
+        alert("Please, Complete the expression!")
+        return;
+    }
+
+    if ( operator === null)
+return;
 
     let result;
+    
     const prev = parseFloat(previousInput);
     const current = parseFloat(currentInput);
 
@@ -61,8 +76,6 @@ function calculate() {
             }
             result = prev / current;
             break;
-        case '.':
-            return;
         default:
             return;
     }
@@ -98,7 +111,6 @@ function toggleSign() {
 }
 
 function updateDisplay() {
-    // If operator pressed and waiting for next number, don't show the 0
     if (operator && currentInput === '0' && shouldResetDisplay) {
         display.textContent = expression.trim();
     } else {
